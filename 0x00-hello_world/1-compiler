@@ -1,3 +1,10 @@
 #!/bin/bash
-gcc -c $CFILE
 
+# Check if CFILE is set
+if [ -z "$CFILE" ]; then
+    echo "Error: CFILE is not set."
+    exit 1
+fi
+
+# Compile the C file without linking
+gcc -c "$CFILE" -o "${CFILE%.c}.
