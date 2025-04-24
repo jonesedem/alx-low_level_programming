@@ -1,5 +1,9 @@
 #include "main.h"
 
+/**
+ * main - Entry point
+ * Return: Always 0
+ */
 int main(void) {
     _putchar('H');
     _putchar('e');
@@ -13,7 +17,6 @@ int main(void) {
     _putchar('l');
     _putchar('d');
     _putchar('!');
-    _putchar('\n');
-    // Return 0 indicates success but doesn't need to print anything.
+    _putchar('\n'); /* Print a newline */
     return (0);
 }
