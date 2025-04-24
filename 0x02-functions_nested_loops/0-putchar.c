@@ -4,19 +4,17 @@
  * main - Entry point
  * Return: Always 0
  */
-int main(void) {
-    _putchar('H');
-    _putchar('e');
-    _putchar('l');
-    _putchar('l');
-    _putchar('o');
-    _putchar(' ');
-    _putchar('W');
-    _putchar('o');
+int main(void)
+{
+    _putchar('_');
+    _putchar('p');
+    _putchar('u');
+    _putchar('t');
+    _putchar('c');
+    _putchar('h');
+    _putchar('a');
     _putchar('r');
-    _putchar('l');
-    _putchar('d');
-    _putchar('!');
-    _putchar('\n'); /* Print a newline */
+    _putchar('\n');
     return (0);
 }
+
