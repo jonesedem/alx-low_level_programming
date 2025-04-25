@@ -1,56 +1,51 @@
 #include <stdio.h>
 
+#define LIMIT 1000000000
+
+/**
+ * print_fib - prints a large Fibonacci number from two parts
+ * @hi: the high part (left side of the number)
+ * @lo: the low part (right side of the number, padded if needed)
+ */
+void print_fib(unsigned long hi, unsigned long lo)
+{
+	if (hi)
+		printf(", %lu%09lu", hi, lo);
+	else
+		printf(", %lu", lo);
+}
+
 /**
  * main - prints the first 98 Fibonacci numbers
  *
- * Return: Always 0 (Success)
+ * Return: Always 0
  */
 int main(void)
 {
-	unsigned long a = 1, b = 2, temp;
-	unsigned long a1, a2, b1, b2;
 	int count;
+	unsigned long a_hi = 0, a_lo = 1;
+	unsigned long b_hi = 0, b_lo = 2;
+	unsigned long next_hi, next_lo;
 
-	printf("%lu, %lu", a, b);
+	printf("%lu, %lu", a_lo, b_lo);
 
-	count = 2;
-	while (count < 98)
+	for (count = 2; count < 98; count++)
 	{
-		if (b < 10000000000000000000UL)
+		next_lo = a_lo + b_lo;
+		next_hi = a_hi + b_hi;
+
+		if (next_lo >= LIMIT)
 		{
-			temp = a + b;
-			a = b;
-			b = temp;
-			printf(", %lu", b);
+			next_lo -= LIMIT;
+			next_hi += 1;
 		}
-		else
-		{
-			a1 = a / 1000000000;
-			a2 = a % 1000000000;
-			b1 = b / 1000000000;
-			b2 = b % 1000000000;
 
-			temp = a2 + b2;
-			a2 = b2;
-			a1 = b1;
+		print_fib(next_hi, next_lo);
 
-			if (temp >= 1000000000)
-			{
-				b2 = temp % 1000000000;
-				b1 = a1 + b1 + 1;
-			}
-			else
-			{
-				b2 = temp;
-				b1 = a1 + b1;
-			}
-
-			printf(", %lu%09lu", b1, b2);
-
-			a1 = b1 - (temp >= 1000000000 ? 1 : 0);
-			a2 = b2;
-		}
-		count++;
+		a_lo = b_lo;
+		a_hi = b_hi;
+		b_lo = next_lo;
+		b_hi = next_hi;
 	}
 	printf("\n");
 	return (0);
