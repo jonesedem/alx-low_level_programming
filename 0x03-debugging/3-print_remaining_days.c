@@ -12,7 +12,7 @@
 void print_remaining_days(int month, int day, int year)
 {
     // Correct leap year check
-    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+    if ((year % 400 == 0 && year % 100 != 0) || (year % 4 == 0))
     {
         // If it's a leap year and the date is after Feb 29th, we adjust the day
         if (month > 2 && day >= 60)
