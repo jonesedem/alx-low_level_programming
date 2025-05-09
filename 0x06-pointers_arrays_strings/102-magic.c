@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+/**
+ * main - Magic function to demonstrate pointer manipulation
+ *
+ * Return: Always 0
+ */
 int main(void)
 {
 int n;
