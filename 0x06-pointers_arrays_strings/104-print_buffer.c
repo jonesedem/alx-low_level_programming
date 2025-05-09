@@ -1,43 +1,51 @@
 #include "main.h"
 #include <stdio.h>
 
+/**
+ * print_buffer - prints a buffer
+ * @b: buffer to print
+ * @size: size of buffer
+ */
 void print_buffer(char *b, int size)
 {
-    int i, j;
-    
-    if (size <= 0)
-    {
-        printf("\n");
-        return;
-    }
+	int i, j;
 
-    for (i = 0; i < size; i += 10)
-    {
-        /* Print the address of the first byte in the line */
-        printf("%08x: ", i);
+	/* Blank line added after declarations to satisfy Betty */
 
-        /* Print the hexadecimal values of the buffer (up to 10 bytes per line) */
-        for (j = 0; j < 10; j++)
-        {
-            if (i + j < size)
-                printf("%02x ", b[i + j]);
-            else
-                printf("   ");  /* Print spaces for missing bytes */
-        }
+	if (size <= 0)
+	{
+		printf("\n");
+		return;
+	}
 
-        /* Print the printable characters or a dot (.) */
-        for (j = 0; j < 10; j++)
-        {
-            if (i + j < size)
-            {
-                if (b[i + j] >= 32 && b[i + j] <= 126)
-                    printf("%c", b[i + j]);
-                else
-                    printf(".");
-            }
-        }
+	for (i = 0; i < size; i += 10)
+	{
+		printf("%08x: ", i);
 
-        printf("\n");
-    }
+		for (j = 0; j < 10; j++)
+		{
+			if ((i + j) < size)
+				printf("%02x", b[i + j]);
+			else
+				printf("  ");
+
+			if ((j % 2) != 0)
+				printf(" ");
+		}
+
+		for (j = 0; j < 10; j++)
+		{
+			if ((i + j) < size)
+			{
+				char c = b[i + j];
+
+				if (c >= 32 && c <= 126)
+					printf("%c", c);
+				else
+					printf(".");
+			}
+		}
+		printf("\n");
+	}
 }
 
